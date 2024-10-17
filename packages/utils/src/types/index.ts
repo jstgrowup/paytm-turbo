@@ -43,4 +43,5 @@ export interface IndividualTransactionPropType {
   index: number;
   amount: number;
   startTime: Date;
+  status: string;
 }

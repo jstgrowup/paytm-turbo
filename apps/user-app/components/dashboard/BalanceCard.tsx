@@ -10,7 +10,7 @@ export const BalanceCard = ({
       <h2 className="flex items-center gap-2 text-xl font-semibold text-gray-800">
         Balance
       </h2>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 text-md font-medium">
         <div className="flex justify-between border-b border-slate-300 ">
           <div>Unlocked balance</div>
           <div>{amount / 100} INR</div>

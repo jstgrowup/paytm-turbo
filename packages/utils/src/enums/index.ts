@@ -1,5 +1,5 @@
 export enum OnRampStatus {
-  Success,
-  Failure,
-  Processing,
+  Success = "Success",
+  Pending = "Pending",
+  Failed = "Failed",
 }

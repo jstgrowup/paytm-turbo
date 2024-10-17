@@ -5,10 +5,10 @@ export async function GET(request: Request) {
     await db.$transaction([
       db.onRampTransaction.updateMany({
         where: {
-          status: "Success",
+          status: "Processing",
         },
         data: {
-          status: "Processing",
+          status: "Success",
         },
       }),
     ]);

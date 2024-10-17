@@ -33,6 +33,7 @@ export const RecentTransactions = () => {
               index={index}
               amount={t.amount}
               startTime={t.startTime}
+              status={t.status}
             />
           ))
         )}
