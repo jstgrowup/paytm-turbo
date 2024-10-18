@@ -65,7 +65,10 @@ export const authOptions: AuthOptions = {
       },
     }),
   ],
-
+  session: {
+    strategy: "jwt",
+    maxAge: 5 * 60,
+  },
   secret: process.env.JWT_SECRET || "secret",
   callbacks: {
     async session({ token, session }: any) {

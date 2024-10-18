@@ -9,13 +9,11 @@ const AppbarClient = () => {
   const router = useRouter();
   const onSignout = async () => await signOut();
   return (
-    <div>
-      <Appbar
-        onSignout={onSignout}
-        onRedirect={() => router.push("/auth")}
-        user={session?.data?.user}
-      />
-    </div>
+    <Appbar
+      onSignout={onSignout}
+      onRedirect={() => router.push("/auth")}
+      user={session?.data?.user}
+    />
   );
 };
 

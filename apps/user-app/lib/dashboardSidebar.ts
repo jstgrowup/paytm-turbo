@@ -2,7 +2,7 @@ import { ArrowLeftRight, Clock, House, type LucideIcon } from "lucide-react";
 interface SidebarItem {
   href: string;
   title: string;
-  icon: LucideIcon; // Use the LucideIcon type
+  icon: LucideIcon;
 }
 export const DashboardSidebar: SidebarItem[] = [
   {

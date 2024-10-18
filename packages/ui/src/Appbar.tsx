@@ -7,8 +7,8 @@ interface AppbarProps {
 }
 export const Appbar = ({ user, onRedirect, onSignout }: AppbarProps) => {
   return (
-    <nav className="bg-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="bg-white shadow-md w-screen">
+      <div className="sm:px-6 lg:px-10 border ">
         <div className="flex justify-between h-20">
           <div
             className="flex justify-center items-center cursor-pointer"

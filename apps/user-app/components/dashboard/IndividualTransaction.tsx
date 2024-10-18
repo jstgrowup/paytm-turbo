@@ -31,9 +31,7 @@ const IndividualTransaction: React.FC<IndividualTransactionPropType> = ({
         <div className="text-slate-600 text-sm">{formatDate(startTime)}</div>
       </div>
       <div className="flex flex-col items-end">
-        <div className="text-md font-semibold">
-          +₹{(amount / 100).toFixed(2)}
-        </div>
+        <div className="text-md font-semibold">+₹{amount}</div>
         <div className={`text-md ${getStatusColor(status)}`}>{status}</div>
       </div>
     </div>

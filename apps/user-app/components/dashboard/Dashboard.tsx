@@ -27,7 +27,7 @@ const Dashboard = () => {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 p-4">
             <AddMoneyCard />
             <div className="flex flex-col gap-3">
-              <BalanceCard amount={0} locked={0} />
+              <BalanceCard />
               <RecentTransactions />
             </div>
           </div>

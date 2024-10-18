@@ -12,16 +12,34 @@ export interface OnRampResponseInterface {
   amount: number;
   bank?: string;
 }
+export interface BalanceResponseInterface {
+  id: string;
+  userId: string;
+  amount: number;
+  locked?: number;
+}
 export interface OnRampTransactionsActionResponse {
   success: boolean;
   message: string;
   data?: OnRampResponseInterface[];
+}
+export interface BalanceActionResponse {
+  success: boolean;
+  message: string;
+  data?: BalanceResponseInterface;
 }
 export type TransferStoreType = {
   loading: boolean;
   createTransactionStoreAction: (amount: string, provider: string) => void;
   getAllTransactionsAction: () => void;
   transactions: OnRampResponseInterface[];
+  error?: string;
+};
+export type BalanceStoreType = {
+  loading: boolean;
+  incrementBalanceStoreAction: (amount: string, provider: string) => void;
+  getWalletBalanceAction: () => void;
+  balance: number;
   error?: string;
 };
 export type AuthStoreType = {
