@@ -13,7 +13,7 @@ export const useBalanceStore = create<BalanceStoreType>((set) => ({
     set({ loading: true });
     try {
       const incrementedBalanceRes = await addBalanceAction(Number(amount));
-      set({ loading: false });
+      set({ loading: false, balance: incrementedBalanceRes?.data });
       return incrementedBalanceRes;
     } catch (error: any) {
       set({ loading: false });
@@ -25,6 +25,7 @@ export const useBalanceStore = create<BalanceStoreType>((set) => ({
       const walletBalanceRes = await getWalletBalance();
       set({
         loading: false,
+        balance: walletBalanceRes.data,
       });
       return walletBalanceRes;
     } catch (error: any) {

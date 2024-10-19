@@ -1,49 +1,54 @@
 import axios, { AxiosInstance } from "axios";
 
-interface ApiResponse {
-  data: any;
-}
-
 export class ApiClient {
   private client: AxiosInstance;
+
   constructor(baseURL: string) {
     this.client = axios.create({
-      baseURL: baseURL,
+      baseURL,
       headers: {
         "Content-Type": "application/json",
       },
     });
   }
 
-  async get(endpoint: string): Promise<any> {
+  async get(endpoint: string) {
     try {
-      return this.client.get<ApiResponse>(endpoint);
+      const response = await this.client.get(endpoint);
+      return response.data;
     } catch (error) {
-      return error;
+      console.error("Error in GET request:", error);
+      return null;
     }
   }
 
-  async post(endpoint: string, requestData: any): Promise<any> {
+  async post(endpoint: string, data: any) {
     try {
-      return this.client.post<ApiResponse>(endpoint, requestData);
+      const response = await this.client.post(endpoint, data);
+      return response.data;
     } catch (error) {
-      return error;
+      console.error("Error in POST request:", error);
+      return null;
     }
   }
 
-  async put(endpoint: string, requestData: any): Promise<any> {
+  async put(endpoint: string, data: any) {
     try {
-      return this.client.put<ApiResponse>(endpoint, requestData);
+      const response = await this.client.put(endpoint, data);
+      return response.data;
     } catch (error) {
-      return error;
+      console.error("Error in PUT request:", error);
+      return null;
     }
   }
 
-  async delete(endpoint: string): Promise<any> {
+  async delete(endpoint: string) {
     try {
-      return await this.client.delete<ApiResponse>(endpoint);
+      const response = await this.client.delete(endpoint);
+      return response.data;
     } catch (error) {
-      return error;
+      console.error("Error in DELETE request:", error);
+      return null;
     }
   }
 }

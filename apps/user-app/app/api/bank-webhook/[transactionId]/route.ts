@@ -7,7 +7,6 @@ export async function GET(
 ) {
   try {
     const { transactionId } = params;
-
     const result = await db.$transaction(async () => {
       const transaction = await db.onRampTransaction.findUnique({
         where: { id: transactionId },

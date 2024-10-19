@@ -15,52 +15,16 @@ PayClone is a modern, full-stack payment application inspired by Paytm. It lever
 
 - User authentication and authorization
 - Wallet management
-- Peer-to-peer money transfer
-- Bill payments and recharges
+- Peer-to-peer money transfer from bank to wallet
 - Transaction history and analytics
-- Real-time notifications
 
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
 - Node.js (v14 or later)
-- pnpm (v6 or later)
+- npm (v6 or later)
 - Git
-
-## Getting Started
-
-1. Clone the repository:
-
-   ```
-   git clone https://github.com/yourusername/payclone.git
-   cd payclone
-   ```
-
-2. Install dependencies:
-
-   ```
-   pnpm install
-   ```
-
-3. Set up environment variables:
-
-   - Copy `.env.example` to `.env` in the root directory
-   - Fill in the required environment variables
-
-4. Set up the database:
-
-   ```
-   pnpm prisma migrate dev
-   ```
-
-5. Start the development server:
-
-   ```
-   pnpm dev
-   ```
-
-6. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
 ## Project Structure
 
@@ -78,11 +42,11 @@ payclone/
 
 ## Scripts
 
-- `pnpm dev`: Start the development server
-- `pnpm build`: Build the application for production
-- `pnpm start`: Start the production server
-- `pnpm lint`: Run ESLint
-- `pnpm test`: Run tests
+- `npm dev`: Start the development server
+- `npm build`: Build the application for production
+- `npm start`: Start the production server
+- `npm lint`: Run ESLint
+- `npm test`: Run tests
 
 ## Contributing
 

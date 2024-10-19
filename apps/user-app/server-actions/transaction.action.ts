@@ -27,6 +27,7 @@ export async function createOnRampTransactions(
         token: tokenFromBank,
       },
     });
+
     if (newTransaction) {
       const response = {
         success: true,
@@ -34,8 +35,28 @@ export async function createOnRampTransactions(
       };
       setTimeout(async () => {
         try {
-          return await api.get(`/api/bank-webhook/${newTransaction.id}`);
-        } catch (error) {
+          const transactionResponse = await api.get(
+            `/api/bank-webhook/${newTransaction.id}`
+          );
+          if (transactionResponse) {
+            return db.balance
+              .update({
+                where: {
+                  userId: userId,
+                },
+                data: {
+                  amount: { increment: amount },
+                },
+              })
+              .then(() => {
+                return {
+                  success: true,
+                  message: "Balance updated successfully",
+                };
+              });
+          }
+          return null;
+        } catch (error: any) {
           throw new Error("Error updating bank transaction:");
         }
       }, 5000);

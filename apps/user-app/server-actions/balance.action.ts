@@ -21,6 +21,7 @@ export async function addBalanceAction(amount: number) {
       return {
         success: true,
         message: "Wallet updated successfully",
+        data: response.amount,
       };
     }
   } catch (error) {
@@ -42,12 +43,11 @@ export async function getWalletBalance() {
         userId: userId,
       },
     });
-
     if (userBalance) {
       return {
         success: true,
         message: "Transactions fetched succesfully",
-        data: userBalance,
+        data: userBalance.amount,
       };
     }
     return {
