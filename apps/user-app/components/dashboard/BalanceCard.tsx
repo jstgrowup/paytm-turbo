@@ -1,7 +1,6 @@
 "use client";
 import { useBalanceStore } from "@/store/balance";
 import { useEffect } from "react";
-
 export const BalanceCard = () => {
   const { balance, getWalletBalanceAction } = useBalanceStore((store) => store);
   useEffect(() => {

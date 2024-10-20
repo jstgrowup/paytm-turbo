@@ -2,6 +2,7 @@
 import { authOptions } from "@/app/lib/auth";
 import db from "@repo/db/client";
 import { ApiClient } from "@repo/utils/api-client";
+import { TRANSACTION_CONSTANTS } from "@repo/utils/constants";
 import { OnRampTransactionsActionResponse } from "@repo/utils/types";
 import { getServerSession } from "next-auth";
 import { v4 as uuidv4 } from "uuid";
@@ -31,14 +32,14 @@ export async function createOnRampTransactions(
     if (newTransaction) {
       const response = {
         success: true,
-        message: "Transaction created successfully",
+        message: TRANSACTION_CONSTANTS.TRANSACTION_CREATED_SUCCESSFUL,
       };
       setTimeout(async () => {
         try {
           const transactionResponse = await api.get(
             `/api/bank-webhook/${newTransaction.id}`
           );
-          if (transactionResponse) {
+          if (transactionResponse.success) {
             return db.balance
               .update({
                 where: {
@@ -51,11 +52,19 @@ export async function createOnRampTransactions(
               .then(() => {
                 return {
                   success: true,
-                  message: "Balance updated successfully",
+                  message: TRANSACTION_CONSTANTS.BALANCE_UPDATED,
                 };
               });
+          } else {
+            await db.onRampTransaction.update({
+              where: {
+                id: newTransaction.id,
+              },
+              data: {
+                status: "Failure",
+              },
+            });
           }
-          return null;
         } catch (error: any) {
           throw new Error("Error updating bank transaction:");
         }
@@ -87,13 +96,13 @@ export async function getOnRampTransactions(): Promise<OnRampTransactionsActionR
     });
     return {
       success: true,
-      message: "Transactions fetched succesfully",
+      message: TRANSACTION_CONSTANTS.TRANSACTIONS_FETCHED,
       data: userTransactions,
     };
   } catch (error) {
     return {
       success: false,
-      message: "Something went wrong while fetching OnRamp transaction.",
+      message: TRANSACTION_CONSTANTS.ERRROR_WHILE_ONRAMP,
     };
   }
 }

@@ -2,18 +2,16 @@
 import { useState } from "react";
 import { useFormik } from "formik";
 import { showErrorToast, showSuccessToast } from "@repo/ui/toast";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import PasswordInput from "./Password-input";
 import { authFormSchema } from "@repo/validation/schema/auth";
 import { formikInitialValuesforAuth } from "@repo/validation/formik/auth";
-import { Button } from "@repo/ui/button";
+import { AUTH_CONSTANTS, COMMON_CONSTANTS } from "@repo/utils/constants";
 export const AuthForm = ({
   signIn,
 }: {
   signIn: (type: string, options: any) => void;
 }) => {
-  const { status } = useSession();
   const [login, setlogin] = useState<boolean>(false);
   const router = useRouter();
   const { handleChange, handleSubmit, values, errors, touched } = useFormik({
@@ -29,18 +27,16 @@ export const AuthForm = ({
         });
         if (result?.ok) {
           if (login) {
-            showSuccessToast("Successfully Signed in!");
+            showSuccessToast(AUTH_CONSTANTS.SIGNIN_SUCCESS);
           } else {
-            showSuccessToast("Signup Sucessfull!");
+            showSuccessToast(AUTH_CONSTANTS.SIGNIN_SUCCESS);
           }
           router.push("/");
         } else {
-          showErrorToast(
-            result?.error || "Wrong credentials, please try again"
-          );
+          showErrorToast(result?.error || AUTH_CONSTANTS.WRONG_CREDS);
         }
       } catch (error: any) {
-        showErrorToast("An unexpected error occurred. Please try again.");
+        showErrorToast(COMMON_CONSTANTS.UNEXPECTED_ERROR);
       }
     },
   });

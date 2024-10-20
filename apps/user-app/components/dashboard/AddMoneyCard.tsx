@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "@repo/ui/button";
 import { Select } from "@repo/ui/select";
 import { TextInput } from "@repo/ui/textinput";
@@ -9,12 +9,17 @@ import { useFormik } from "formik";
 import { transferFormSchema } from "@repo/validation/schema/transfer";
 import { showErrorToast, showSuccessToast } from "@repo/ui/toast";
 import { formikInitialValuesforTransfer } from "@repo/validation/formik/transfer";
+import { useBalanceStore } from "@/store/balance";
+import { COMMON_CONSTANTS } from "@repo/utils/constants";
 const AddMoneyCard = () => {
   const {
     createTransactionStoreAction,
     getAllTransactionsAction,
     loading: transactionLoading,
   } = useTransferStore((store) => store);
+  const getWalletBalanceAction = useBalanceStore(
+    (store) => store.getWalletBalanceAction
+  );
 
   const { handleChange, handleSubmit, values, errors, touched } = useFormik({
     initialValues: formikInitialValuesforTransfer,
@@ -28,20 +33,19 @@ const AddMoneyCard = () => {
         if (result.success) {
           showSuccessToast(result.message);
           getAllTransactionsAction();
+          setTimeout(() => {
+            getAllTransactionsAction();
+            getWalletBalanceAction();
+          }, 6000);
         } else if (result.success) {
           showErrorToast(result.message);
         }
       } catch (error: any) {
-        showErrorToast("An unexpected error occurred. Please try again.");
+        showErrorToast(COMMON_CONSTANTS.UNEXPECTED_ERROR);
       }
     },
   });
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      getAllTransactionsAction();
-    }, 5000);
-    return () => clearTimeout(timer);
-  }, []);
+
   return (
     <div className="w-full  mx-auto bg-white rounded-xl md:rounded-xl flex flex-col gap-3">
       <div className="p-6 border-b border-gray-200">

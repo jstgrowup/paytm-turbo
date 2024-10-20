@@ -6,7 +6,9 @@ export const RecentTransactions = () => {
   const { getAllTransactionsAction, transactions, loading } = useTransferStore(
     (store) => store
   );
-
+  useEffect(() => {
+    getAllTransactionsAction();
+  }, []);
   return (
     <div className="w-full  bg-white rounded-xl md:rounded-xl flex flex-col gap-3 p-4 md:p-5 ">
       <h2 className="flex items-center text-xl font-semibold text-gray-800">

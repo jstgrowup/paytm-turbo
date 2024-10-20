@@ -63,3 +63,11 @@ export interface IndividualTransactionPropType {
   startTime: Date;
   status: string;
 }
+export type PasswordInputProps = {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  name: string;
+  label: string;
+  error?: string;
+  placeholder?: string;
+};

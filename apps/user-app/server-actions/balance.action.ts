@@ -1,6 +1,7 @@
 "use server";
 import { authOptions } from "@/app/lib/auth";
 import db from "@repo/db/client";
+import { TRANSACTION_CONSTANTS } from "@repo/utils/constants";
 import { getServerSession } from "next-auth";
 export async function addBalanceAction(amount: number) {
   try {
@@ -20,14 +21,14 @@ export async function addBalanceAction(amount: number) {
     if (response) {
       return {
         success: true,
-        message: "Wallet updated successfully",
+        message: TRANSACTION_CONSTANTS.WALLET_UPDATED,
         data: response.amount,
       };
     }
   } catch (error) {
     return {
       success: false,
-      message: "Something went wrong while creating OnRamp transaction.",
+      message: TRANSACTION_CONSTANTS.ERRROR_WHILE_ONRAMP,
     };
   }
 }
@@ -46,18 +47,18 @@ export async function getWalletBalance() {
     if (userBalance) {
       return {
         success: true,
-        message: "Transactions fetched succesfully",
+        message: TRANSACTION_CONSTANTS.TRANSACTIONS_FETCHED,
         data: userBalance.amount,
       };
     }
     return {
       success: false,
-      message: "Sorry no balance found",
+      message: TRANSACTION_CONSTANTS.NO_BALANCE_RECORD,
     };
   } catch (error) {
     return {
       success: false,
-      message: "Something went wrong while fetching OnRamp transaction.",
+      message: TRANSACTION_CONSTANTS.ERRROR_WHILE_ONRAMP,
     };
   }
 }

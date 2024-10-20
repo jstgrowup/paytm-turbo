@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import type { AuthUserResponseInterface } from "@repo/utils/types";
 import { AuthOptions } from "next-auth";
+import { AUTH_CONSTANTS } from "@repo/utils/constants";
 export const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
@@ -16,7 +17,7 @@ export const authOptions: AuthOptions = {
       ): Promise<AuthUserResponseInterface | any> {
         try {
           if (!credentials?.email || !credentials?.password) {
-            throw new Error("Please provide both email and password");
+            throw new Error(AUTH_CONSTANTS.NO_EMAIL_PASS);
           }
           const foundUser = await db.user.findFirst({
             where: {
@@ -31,7 +32,7 @@ export const authOptions: AuthOptions = {
             );
 
             if (!decryptedPassword) {
-              throw new Error("Wrong password, please try again");
+              throw new Error(AUTH_CONSTANTS.WRONG_PASS);
             } else {
               return {
                 id: String(foundUser.id),
@@ -64,9 +65,7 @@ export const authOptions: AuthOptions = {
                 email: createdUser.email,
               };
             } else {
-              throw new Error(
-                "Something went wrong while creating your account please try again later"
-              );
+              throw new Error(AUTH_CONSTANTS.ERROR_IN_CREATING_ACCOUNT);
             }
           }
         } catch (error: any) {
@@ -79,7 +78,7 @@ export const authOptions: AuthOptions = {
   ],
   session: {
     strategy: "jwt",
-    maxAge: 5 * 60,
+    maxAge: 60 * 60,
   },
   secret: process.env.JWT_SECRET || "secret",
   callbacks: {

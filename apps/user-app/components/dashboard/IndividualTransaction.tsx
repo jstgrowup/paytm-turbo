@@ -1,6 +1,5 @@
 import { IndividualTransactionPropType } from "@repo/utils/types";
 import { formatDate } from "@repo/utils/time-formatter";
-
 import React from "react";
 import { OnRampStatus } from "@repo/utils/enums";
 const IndividualTransaction: React.FC<IndividualTransactionPropType> = ({
