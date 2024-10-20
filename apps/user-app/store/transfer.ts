@@ -7,11 +7,9 @@ import {
   OnRampTransactionsActionResponse,
 } from "@repo/utils/types";
 import { create } from "zustand";
-
 export const useTransferStore = create<TransferStoreType>((set) => ({
   loading: false,
   transactions: [],
-
   createTransactionStoreAction: async (amount: string, provider: string) => {
     set({ loading: true });
     try {

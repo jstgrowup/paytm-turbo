@@ -1,10 +1,16 @@
-import { ArrowLeftRight, Clock, House, type LucideIcon } from "lucide-react";
+import {
+  ArrowLeftRight,
+  Clock,
+  House,
+  Send,
+  type LucideIcon,
+} from "lucide-react";
 interface SidebarItem {
   href: string;
   title: string;
   icon: LucideIcon;
 }
-export const DashboardSidebar: SidebarItem[] = [
+export const DashboardSidebarLinks: SidebarItem[] = [
   {
     href: "/dashboard",
     title: "Home",
@@ -19,5 +25,10 @@ export const DashboardSidebar: SidebarItem[] = [
     href: "/transactions",
     title: "Transactions",
     icon: Clock,
+  },
+  {
+    href: "/transfer",
+    title: "P2P Transafer",
+    icon: Send,
   },
 ];

@@ -75,7 +75,7 @@ export async function createOnRampTransactions(
   } catch (error) {
     return {
       success: false,
-      message: "Something went wrong while creating OnRamp transaction.",
+      message: TRANSACTION_CONSTANTS.ERRROR_WHILE_ONRAMP,
     };
   }
 }

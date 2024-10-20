@@ -8,7 +8,6 @@ import { create } from "zustand";
 export const useBalanceStore = create<BalanceStoreType>((set) => ({
   loading: false,
   balance: 0,
-
   incrementBalanceStoreAction: async (amount: string) => {
     set({ loading: true });
     try {
