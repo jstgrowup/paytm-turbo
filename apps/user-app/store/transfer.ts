@@ -10,6 +10,7 @@ import { create } from "zustand";
 export const useTransferStore = create<TransferStoreType>((set) => ({
   loading: false,
   transactions: [],
+  setLoading: (loading: boolean) => set({ loading }),
   createTransactionStoreAction: async (amount: string, provider: string) => {
     set({ loading: true });
     try {
@@ -34,8 +35,8 @@ export const useTransferStore = create<TransferStoreType>((set) => ({
         message: userTransactions.message,
       };
       set({
-        transactions: userTransactions.data,
         loading: false,
+        transactions: userTransactions.data,
       });
       return buildedTransactionData;
     } catch (error: any) {

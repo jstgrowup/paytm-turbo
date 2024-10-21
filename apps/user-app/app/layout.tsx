@@ -21,7 +21,7 @@ export default async function RootLayout({
     <html lang="en">
       <Providers session={session}>
         <body className={inter.className}>
-          <div className="min-h-screen">
+          <div className="flex flex-col h-screen ">
             <AppbarClient />
             <Toaster />
             {children}

@@ -11,11 +11,12 @@ import { showErrorToast, showSuccessToast } from "@repo/ui/toast";
 import { formikInitialValuesforTransfer } from "@repo/validation/formik/transfer";
 import { useBalanceStore } from "@/store/balance";
 import { COMMON_CONSTANTS } from "@repo/utils/constants";
+import { OnRampStatus } from "@repo/utils/enums";
 const AddMoneyCard = () => {
   const {
     createTransactionStoreAction,
     getAllTransactionsAction,
-    loading: transactionLoading,
+    transactions,
   } = useTransferStore((store) => store);
   const getWalletBalanceAction = useBalanceStore(
     (store) => store.getWalletBalanceAction
@@ -89,7 +90,10 @@ const AddMoneyCard = () => {
           ) : null}
         </div>
 
-        <Button onClick={handleSubmit} loading={transactionLoading}>
+        <Button
+          onClick={handleSubmit}
+          loading={transactions[0]?.status === OnRampStatus.Processing}
+        >
           Add Money
         </Button>
       </form>

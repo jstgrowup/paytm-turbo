@@ -4,7 +4,6 @@ import {
 } from "@/server-actions/balance.action";
 import { BalanceStoreType } from "@repo/utils/types";
 import { create } from "zustand";
-
 export const useBalanceStore = create<BalanceStoreType>((set) => ({
   loading: false,
   balance: 0,
@@ -12,7 +11,7 @@ export const useBalanceStore = create<BalanceStoreType>((set) => ({
     set({ loading: true });
     try {
       const incrementedBalanceRes = await addBalanceAction(Number(amount));
-      set({ loading: false, balance: incrementedBalanceRes?.data });
+      set({ balance: incrementedBalanceRes?.data });
       return incrementedBalanceRes;
     } catch (error: any) {
       set({ loading: false });

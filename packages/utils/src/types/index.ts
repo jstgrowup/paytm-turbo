@@ -34,6 +34,7 @@ export type TransferStoreType = {
   getAllTransactionsAction: () => void;
   transactions: OnRampResponseInterface[];
   error?: string;
+  setLoading: (loading: boolean) => void;
 };
 export type BalanceStoreType = {
   loading: boolean;
@@ -71,3 +72,7 @@ export type PasswordInputProps = {
   error?: string;
   placeholder?: string;
 };
+export interface DashboardSidebarProps {
+  isOpen: boolean;
+  toggleSidebar: () => void;
+}
