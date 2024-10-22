@@ -2,10 +2,9 @@ import { Providers } from "@/provider";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import AppbarClient from "@/components/AppbarClient";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./lib/auth";
-import { Toaster } from "sonner";
+import Root from "./root";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Paytm",
@@ -21,11 +20,7 @@ export default async function RootLayout({
     <html lang="en">
       <Providers session={session}>
         <body className={inter.className}>
-          <div className="flex flex-col h-screen ">
-            <AppbarClient />
-            <Toaster />
-            {children}
-          </div>
+          <Root>{children}</Root>
         </body>
       </Providers>
     </html>

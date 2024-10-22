@@ -43,6 +43,11 @@ export type BalanceStoreType = {
   balance: number;
   error?: string;
 };
+export type P2PStoreType = {
+  loading: boolean;
+  sendMoneyAction: (amount: number, email: string) => void;
+  error?: string;
+};
 export type AuthStoreType = {
   loading: boolean;
   error: string | null;

@@ -27,7 +27,7 @@ export const DashboardSidebarLinks: SidebarItem[] = [
     icon: Clock,
   },
   {
-    href: "/transfer",
+    href: "/p2p",
     title: "P2P Transafer",
     icon: Send,
   },
