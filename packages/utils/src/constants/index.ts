@@ -20,3 +20,10 @@ export const AUTH_CONSTANTS = {
 export const COMMON_CONSTANTS = {
   UNEXPECTED_ERROR: "An unexpected error occurred. Please try again.",
 };
+export const P2P_CONSTANTS = {
+  RECIEVERS_EMAIL_NOT_FOUND: "Unable to find the recievers email",
+  INSUFFICIENT_BALANCE: "Insufficient balance",
+  PLEASE_ENTER_AN_AMOUNT: "Please enter a valid amount",
+
+  P2P_SUCCESFULL: "Money sent successfully",
+};

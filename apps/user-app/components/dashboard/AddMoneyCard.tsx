@@ -13,11 +13,8 @@ import { useBalanceStore } from "@/store/balance";
 import { COMMON_CONSTANTS } from "@repo/utils/constants";
 import { OnRampStatus } from "@repo/utils/enums";
 const AddMoneyCard = () => {
-  const {
-    createTransactionStoreAction,
-    getAllTransactionsAction,
-    transactions,
-  } = useTransferStore((store) => store);
+  const { createTransactionStoreAction, getAllTransactionsAction, loading } =
+    useTransferStore((store) => store);
   const getWalletBalanceAction = useBalanceStore(
     (store) => store.getWalletBalanceAction
   );
@@ -90,10 +87,7 @@ const AddMoneyCard = () => {
           ) : null}
         </div>
 
-        <Button
-          onClick={handleSubmit}
-          loading={transactions[0]?.status === OnRampStatus.Processing}
-        >
+        <Button type="submit" onClick={handleSubmit} loading={loading}>
           Add Money
         </Button>
       </form>

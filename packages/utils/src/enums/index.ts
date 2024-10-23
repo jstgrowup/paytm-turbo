@@ -4,3 +4,7 @@ export enum OnRampStatus {
   Failed = "Failed",
   Processing = "Processing",
 }
+export enum TransactionType {
+  Credit = "Credit",
+  Debit = "Debit",
+}

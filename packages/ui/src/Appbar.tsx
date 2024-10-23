@@ -8,7 +8,6 @@ interface AppbarProps {
 }
 export const Appbar = ({ user, onRedirect, onSignout }: AppbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
     <nav className="bg-white shadow-md border-b-2 border-gray-300">
       <div className="px-4 lg:px-10 md:px-10 flex justify-between h-20">

@@ -1,10 +1,10 @@
 import { Loader2 } from "lucide-react";
 import { ButtonProps } from "./utils/types";
-export const Button = ({ onClick, children, loading }: ButtonProps) => {
+export const Button = ({ onClick, children, loading, type }: ButtonProps) => {
   return (
     <button
       onClick={onClick}
-      type="button"
+      type={type ?? "button"}
       disabled={loading}
       className={`rounded-xl w-full py-3 px-4 font-medium transition-colors ${
         loading

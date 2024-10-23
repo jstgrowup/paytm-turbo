@@ -1,12 +1,13 @@
 import { IndividualTransactionPropType } from "@repo/utils/types";
 import { formatDate } from "@repo/utils/time-formatter";
 import React from "react";
-import { OnRampStatus } from "@repo/utils/enums";
+import { OnRampStatus, TransactionType } from "@repo/utils/enums";
 const IndividualTransaction: React.FC<IndividualTransactionPropType> = ({
   index,
   startTime,
   amount,
   status,
+  transactionType,
 }) => {
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -26,11 +27,15 @@ const IndividualTransaction: React.FC<IndividualTransactionPropType> = ({
       key={index}
     >
       <div className="flex-grow">
-        <div className="text-md font-medium">Received INR</div>
+        <div className="text-md font-medium">
+          {transactionType === TransactionType.Debit ? "Sent" : "Recieved"} INR
+        </div>
         <div className="text-slate-600 text-sm">{formatDate(startTime)}</div>
       </div>
       <div className="flex flex-col items-end">
-        <div className="text-md font-semibold">+₹{amount}</div>
+        <div className="text-md font-semibold">
+          {transactionType === TransactionType.Debit ? "-" : "+"}₹{amount}
+        </div>
         <div className={`text-md ${getStatusColor(status)}`}>{status}</div>
       </div>
     </div>

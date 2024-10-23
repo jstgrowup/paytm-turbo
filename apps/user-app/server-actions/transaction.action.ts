@@ -26,6 +26,7 @@ export async function createOnRampTransactions(
         startTime: new Date(),
         provider,
         token: tokenFromBank,
+        transactionType: "Credit",
       },
     });
 

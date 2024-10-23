@@ -1,3 +1,5 @@
+import { TransactionType } from "../enums";
+
 export interface OnRampInterface {
   amount: number;
   bank: string;
@@ -5,12 +7,13 @@ export interface OnRampInterface {
 export interface OnRampResponseInterface {
   id: string;
   status: string;
-  token: string;
-  provider: string;
+  token?: string | undefined | null;
+  provider?: string | undefined | null;
   startTime: Date;
   userId: string;
   amount: number;
   bank?: string;
+  transactionType: string;
 }
 export interface BalanceResponseInterface {
   id: string;
@@ -46,7 +49,10 @@ export type BalanceStoreType = {
 export type P2PStoreType = {
   loading: boolean;
   sendMoneyAction: (amount: number, email: string) => void;
-  error?: string;
+  errorMessage?: string;
+  isError: boolean;
+  isSuccess: boolean;
+  successMessage: string;
 };
 export type AuthStoreType = {
   loading: boolean;
@@ -68,6 +74,7 @@ export interface IndividualTransactionPropType {
   amount: number;
   startTime: Date;
   status: string;
+  transactionType: string;
 }
 export type PasswordInputProps = {
   value: string;
@@ -80,4 +87,15 @@ export type PasswordInputProps = {
 export interface DashboardSidebarProps {
   isOpen: boolean;
   toggleSidebar: () => void;
+}
+
+export interface InputFieldProps {
+  label: string;
+  name: string;
+  value: string | number;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
+  error?: string;
+  touched?: boolean;
+  type?: string; // Optional, default is 'text'
 }

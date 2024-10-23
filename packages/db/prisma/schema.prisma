@@ -8,11 +8,24 @@ datasource db {
 }
 
 model User {
-  id                String              @id @default(uuid())
-  email             String?             @unique
-  password          String
-  Balance           Balance[]
-  OnRampTransaction OnRampTransaction[]
+  id                   String              @id @default(uuid())
+  email                String?             @unique
+  password             String
+  Balance              Balance[]
+  OnRampTransaction    OnRampTransaction[]
+  debitedTransactions  p2pTransfer[]       @relation(name: "sendersUser")
+  creditedTransactions p2pTransfer[]       @relation(name: "recieversUser")
+}
+
+model p2pTransfer {
+  id              String          @id @default(uuid())
+  amount          Int
+  timestamp       DateTime
+  sendersUserId   String
+  transactionType TransactionType
+  sendersUser     User            @relation(name: "sendersUser", fields: [sendersUserId], references: [id])
+  recieversUserId String
+  recieversUser   User            @relation(name: "recieversUser", fields: [recieversUserId], references: [id])
 }
 
 model Merchant {
@@ -23,14 +36,15 @@ model Merchant {
 }
 
 model OnRampTransaction {
-  id        String       @id @default(uuid())
-  status    OnRampStatus
-  token     String       @unique
-  provider  String
-  amount    Int
-  startTime DateTime
-  userId    String
-  user      User         @relation(fields: [userId], references: [id])
+  id              String          @id @default(uuid())
+  status          OnRampStatus
+  token           String?         @unique
+  provider        String?
+  amount          Int
+  transactionType TransactionType
+  startTime       DateTime
+  userId          String
+  user            User            @relation(fields: [userId], references: [id])
 }
 
 model Balance {
@@ -50,4 +64,9 @@ enum OnRampStatus {
   Success
   Failure
   Processing
+}
+
+enum TransactionType {
+  Credit
+  Debit
 }
