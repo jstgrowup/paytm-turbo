@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { useFormik } from "formik";
 import { showErrorToast, showSuccessToast } from "@repo/ui/toast";
+import { SocialButton } from "@repo/ui/social-button";
+
 import { useRouter } from "next/navigation";
 import PasswordInput from "./Password-input";
 import { authFormSchema } from "@repo/validation/schema/auth";
@@ -89,33 +91,18 @@ export const AuthForm = ({
                 />
               )}
               <div className="mt-6 grid grid-cols-3 gap-3">
-                <div>
-                  <div className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-xl shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 ">
-                    <img
-                      className="h-5 w-5"
-                      src="https://www.svgrepo.com/show/512120/facebook-176.svg"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div>
-                  <div className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-xl shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                    <img
-                      className="h-5 w-5"
-                      src="https://www.svgrepo.com/show/513008/twitter-154.svg"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div>
-                  <div className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-xl shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                    <img
-                      className="h-6 w-6"
-                      src="https://www.svgrepo.com/show/506498/google.svg"
-                      alt=""
-                    />
-                  </div>
-                </div>
+                <SocialButton
+                  iconSrc="https://www.svgrepo.com/show/512120/facebook-176.svg"
+                  altText="Facebook"
+                />
+                <SocialButton
+                  iconSrc="https://www.svgrepo.com/show/513008/twitter-154.svg"
+                  altText="Twitter"
+                />
+                <SocialButton
+                  iconSrc="https://www.svgrepo.com/show/506498/google.svg"
+                  altText="Google"
+                />
               </div>
               <div className="flex items-start">
                 <div className="flex items-center h-5">

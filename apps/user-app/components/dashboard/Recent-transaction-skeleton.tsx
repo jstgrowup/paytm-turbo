@@ -1,4 +1,4 @@
-const TransactionSkeleton = () => {
+const TransactionSkeleton = (): JSX.Element => {
   return (
     <div className="animate-pulse flex justify-between">
       <div>

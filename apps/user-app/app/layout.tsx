@@ -4,7 +4,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./lib/auth";
-import Root from "./root";
+import AppbarClient from "@/components/AppbarClient";
+import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Paytm",
@@ -20,7 +21,11 @@ export default async function RootLayout({
     <html lang="en">
       <Providers session={session}>
         <body className={inter.className}>
-          <Root>{children}</Root>
+          <div className="flex flex-col h-screen">
+            <AppbarClient />
+            {children}
+            <Toaster />
+          </div>
         </body>
       </Providers>
     </html>

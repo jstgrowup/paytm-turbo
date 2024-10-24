@@ -1,9 +1,7 @@
-"use client";
 import AddMoneyCard from "@/components/dashboard/AddMoneyCard";
 import { BalanceCard } from "@/components/dashboard/BalanceCard";
 import { RecentTransactions } from "@/components/dashboard/RecentTransaction";
-
-const Dashboard = () => {
+const Dashboard = (): JSX.Element => {
   return (
     <>
       <div className=" bg-violet-100 h-screen relative p-2 lg:p-9 md:p-5">

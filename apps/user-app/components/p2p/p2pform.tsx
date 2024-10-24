@@ -29,45 +29,42 @@ const P2PForm = () => {
       },
     });
   return (
-    <div>
-      {" "}
-      <div className="flex flex-col items-center justify-center px-2 py-8 bg-violet-100 flex-grow h-screen">
-        <div className="w-full  md:mt-0 sm:max-w-md xl:p-0 rounded-xl border-spacing-10 shadow-md border bg-white">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
-              Send Money
-            </h1>
-            <form className="space-y-4 md:space-y-6 bg" onSubmit={handleSubmit}>
-              <InputField
-                label="Email"
-                name="email"
-                value={values.email}
-                onChange={handleChange}
-                placeholder="name@email.com"
-                error={errors.email}
-                touched={touched.email}
-              />
+    <div className="flex flex-col items-center  px-2 py-8 bg-violet-100 flex-grow h-screen">
+      <div className="w-full  md:mt-0 sm:max-w-md xl:p-0 rounded-xl border-spacing-10 shadow-md border bg-white">
+        <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
+            Send Money
+          </h1>
+          <form className="space-y-4 md:space-y-6 bg" onSubmit={handleSubmit}>
+            <InputField
+              label="Email"
+              name="email"
+              value={values.email}
+              onChange={handleChange}
+              placeholder="name@email.com"
+              error={errors.email}
+              touched={touched.email}
+            />
 
-              <div>{/* SecureP@ss123 */}</div>
-              <InputField
-                label="Amount"
-                name="amount"
-                type="number"
-                value={values.amount}
-                onChange={handleChange}
-                placeholder="00000"
-                error={errors.amount}
-                touched={touched.amount}
-              />
-              <Button
-                onClick={handleSubmit}
-                type="submit"
-                loading={sendMoneyLoading}
-              >
-                Send
-              </Button>
-            </form>
-          </div>
+            <div>{/* SecureP@ss123 */}</div>
+            <InputField
+              label="Amount"
+              name="amount"
+              type="number"
+              value={values.amount}
+              onChange={handleChange}
+              placeholder="00000"
+              error={errors.amount}
+              touched={touched.amount}
+            />
+            <Button
+              onClick={handleSubmit}
+              type="submit"
+              loading={sendMoneyLoading}
+            >
+              Send
+            </Button>
+          </form>
         </div>
       </div>
     </div>

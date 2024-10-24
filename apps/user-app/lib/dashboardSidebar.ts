@@ -10,17 +10,11 @@ interface SidebarItem {
   title: string;
   icon: LucideIcon;
 }
-// 607
 export const DashboardSidebarLinks: SidebarItem[] = [
   {
     href: "/",
     title: "Home",
     icon: House,
-  },
-  {
-    href: "/transfer",
-    title: "Transfer",
-    icon: ArrowLeftRight,
   },
   {
     href: "/transactions",

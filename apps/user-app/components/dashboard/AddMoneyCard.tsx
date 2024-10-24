@@ -11,8 +11,7 @@ import { showErrorToast, showSuccessToast } from "@repo/ui/toast";
 import { formikInitialValuesforTransfer } from "@repo/validation/formik/transfer";
 import { useBalanceStore } from "@/store/balance";
 import { COMMON_CONSTANTS } from "@repo/utils/constants";
-import { OnRampStatus } from "@repo/utils/enums";
-const AddMoneyCard = () => {
+const AddMoneyCard = (): JSX.Element => {
   const { createTransactionStoreAction, getAllTransactionsAction, loading } =
     useTransferStore((store) => store);
   const getWalletBalanceAction = useBalanceStore(

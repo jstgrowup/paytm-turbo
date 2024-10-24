@@ -9,7 +9,8 @@
     "./center": "./src/Center.tsx",
     "./select": "./src/Select.tsx",
     "./textinput": "./src/text-input.tsx",
-    "./toast": "./src/toast/toast.tsx"
+    "./toast": "./src/toast/toast.tsx",
+    "./social-button": "./src/social-button.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

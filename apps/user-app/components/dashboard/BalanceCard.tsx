@@ -1,14 +1,14 @@
 "use client";
 import { useBalanceStore } from "@/store/balance";
 import { useEffect } from "react";
-export const BalanceCard = () => {
+export const BalanceCard = (): JSX.Element => {
   const { balance, getWalletBalanceAction } = useBalanceStore((store) => store);
   useEffect(() => {
     getWalletBalanceAction();
   }, []);
   return (
     <div className="w-full  bg-white rounded-xl md:rounded-xl flex flex-col gap-2 p-4 md:p-5">
-      <h2 className="flex items-center gap-2 text-xl font-semibold text-gray-800">
+      <h2 className="flex pt-1 items-center gap-2 text-xl font-semibold text-gray-800">
         Balance
       </h2>
       <div className="flex flex-col gap-2 text-md font-medium">

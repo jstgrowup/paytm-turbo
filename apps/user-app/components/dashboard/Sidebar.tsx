@@ -1,4 +1,3 @@
-"use client";
 import { DashboardSidebarLinks } from "@/lib/dashboardSidebar";
 import React from "react";
 import { SidebarItem } from "./SidebarItem";
@@ -24,7 +23,7 @@ const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
       <div
         className={`${
           isOpen ? "block" : "hidden"
-        } sm:block shadow-2xl w-60 lg:w-52 md:w-48 border-r border-slate-300 min-h-screen flex flex-col gap-2 p-5 z-40 bg-gray-700 absolute sm:relative`}
+        } sm:block shadow-2xl w-60 lg:w-52 md:w-48 border-r min-h-screen flex flex-col gap-4 p-5 z-40 bg-gray-700 absolute sm:relative`}
       >
         {DashboardSidebarLinks.map((item, index) => (
           <SidebarItem
