@@ -18,7 +18,7 @@ export const Appbar = ({ user, onRedirect, onSignout }: AppbarProps) => {
           <img
             src="./pay.png"
             alt="paytm"
-            className="w-40 h-20 bg-black rounded-e-full"
+            className="w-40 h-20 rounded-e-full"
           />
         </div>
         <div className="hidden  sm:flex sm:items-center">
