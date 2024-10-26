@@ -21,6 +21,7 @@ export async function sendMoneyAction(amount: number, email: string) {
     if (!toUser) {
       throw new Error(P2P_CONSTANTS.RECIEVERS_EMAIL_NOT_FOUND);
     }
+
     const p2presponse = await db.$transaction(async (transaction) => {
       await transaction.$queryRaw`SELECT * FROM "Balance" WHERE "userId" = ${userId} FOR UPDATE`;
       const sendersBalance = await transaction.balance.findUnique({

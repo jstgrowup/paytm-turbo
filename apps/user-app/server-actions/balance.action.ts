@@ -10,7 +10,7 @@ export async function addBalanceAction(amount: number) {
     if (!userId) {
       return { success: false, message: "Unauthorized user" };
     }
-
+    //
     const response = await db.balance.update({
       where: {
         userId: userId,
