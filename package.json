@@ -1,29 +1,23 @@
 {
-  "name": "week-18",
+  "name": "newpaytm",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "db:generate": "cd packages/db && npx prisma generate && ../.."
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
     "prettier": "^3.2.5",
-    "turbo": "^2.1.2"
+    "turbo": "^2.2.3",
+    "typescript": "5.5.4"
   },
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "npm@10.2.4",
+  "packageManager": "npm@9.6.7",
   "workspaces": [
     "apps/*",
     "packages/*"
-  ],
-  "dependencies": {
-    "zod": "^1.0.0",
-    "zustand": "^5.0.0-rc.2"
-  }
+  ]
 }
