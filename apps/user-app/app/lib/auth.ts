@@ -41,24 +41,26 @@ export const authOptions: AuthOptions = {
             }
           } else {
             const encryptedPass = await bcrypt.hash(credentials.password, 10);
-            const { createdUser } = await db.$transaction(async (prisma) => {
-              const createdUser = await prisma.user.create({
-                data: {
-                  email: credentials.email,
-                  password: encryptedPass,
-                },
-              });
+            const { createdUser } = await db.$transaction(
+              async (prisma: any) => {
+                const createdUser = await prisma.user.create({
+                  data: {
+                    email: credentials.email,
+                    password: encryptedPass,
+                  },
+                });
 
-              const userBalance = await prisma.balance.create({
-                data: {
-                  userId: createdUser.id,
-                  amount: 0,
-                  locked: 0,
-                },
-              });
+                const userBalance = await prisma.balance.create({
+                  data: {
+                    userId: createdUser.id,
+                    amount: 0,
+                    locked: 0,
+                  },
+                });
 
-              return { createdUser, userBalance };
-            });
+                return { createdUser, userBalance };
+              }
+            );
             if (createdUser) {
               return {
                 id: String(createdUser.id),
