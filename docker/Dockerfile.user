@@ -3,7 +3,7 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json turbo.json tsconfig.json ./
 COPY apps ./apps
 COPY packages ./packages
-RUN npm install
+RUN npm cache clean --force && rm -rf node_modules && npm install
 WORKDIR /usr/src/app
 RUN npm run db:generate
 RUN npm run build
