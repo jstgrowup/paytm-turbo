@@ -30,6 +30,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: jstgrwup/paytm:latest
+          no-cache: true 
 
       - name: Verify Image
         run: docker pull jstgrwup/paytm:latest
