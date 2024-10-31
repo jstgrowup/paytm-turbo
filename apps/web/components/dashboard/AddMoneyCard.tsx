@@ -12,7 +12,6 @@ import { formikInitialValuesforTransfer } from "@repo/validation/formik/transfer
 import { useBalanceStore } from "@/store/balance";
 import { COMMON_CONSTANTS } from "@repo/utils/constants";
 const AddMoneyCard = (): JSX.Element => {
-  console.log("JSX:");
   const { createTransactionStoreAction, getAllTransactionsAction, loading } =
     useTransferStore((store) => store);
   const getWalletBalanceAction = useBalanceStore(

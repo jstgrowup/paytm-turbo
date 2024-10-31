@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./button": "./src/button.tsx",
-    "./code": "./src/code.tsx",
+    "./button": "./src/Button.tsx",
+    "./code": "./src/Code.tsx",
     "./appbar": "./src/Appbar.tsx",
     "./center": "./src/Center.tsx",
     "./select": "./src/Select.tsx",
-    "./textinput": "./src/text-input.tsx",
-    "./toast": "./src/toast/toast.tsx",
-    "./social-button": "./src/social-button.tsx"
+    "./textinput": "./src/Text-input.tsx",
+    "./toast": "./src/toast/Toast.tsx",
+    "./social-button": "./src/Social-Button.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
