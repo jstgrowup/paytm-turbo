@@ -4,8 +4,6 @@ COPY package.json package-lock.json turbo.json tsconfig.json ./
 COPY apps ./apps
 COPY packages ./packages
 RUN npm install
-WORKDIR /usr/src/app/apps/web
-RUN npm install
 WORKDIR /usr/src/app
 RUN npm run db:generate
 RUN npm run build
